@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title><%= @title %></title>
+	<style>
+	body {font-family:tahoma;}
+	h1 {background-color: pink; color: red; padding:10px;}
+	.description {padding:10px;}
+	.footer {width:auto; text-align:center; padding-top:20px; border-top:solid 1px red; font-size:.7em;}
+	</style>
+</head>
+<body>
+<h1><%= @title %></h1>
+<div class="description">
+	<?php
+	phpinfo( );
+	?>
+</div>
+<div class="footer">
+	All files are in the <a href="https://github.com/rposbo/basic-chef-solo-vagrant-first-website">associated github repo</a>; comments, issues, forks, PRs welcomed!
+<div>
+</body>
+</html>

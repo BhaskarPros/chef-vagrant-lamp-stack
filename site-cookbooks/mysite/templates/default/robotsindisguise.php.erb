@@ -1,0 +1,56 @@
+<html>
+<head>
+<style>
+body {font-family:tahoma;}
+h1 {background-color: pink; color: red; padding:10px;}
+.description {padding:10px;}
+.footer {width:auto; text-align:center; padding-top:20px; border-top:solid 1px red; font-size:.7em;}
+table {text-align:center;}
+table th {background-color:goldenrod;}
+</style>
+</head>
+<body>
+<h1>rposbo-chef-vagrant-virtualbox Part 1</h1>
+<div class="description">
+Welcome to the php + mysql file used to demonstrate creating a new apache website using chef solo, vagrant, and virtualbox, as used in the <a href="http://robinosborne.co.uk/?s=%22Vagrant+Chef+Solo+101%22">Vagrant Chef Solo</a> blog posts.
+</div>
+
+<?php
+    $con = mysqli_connect("localhost","root", "<%= @pwd %>");
+    if (mysqli_connect_errno($con))
+    {
+        die('Could not connect: ' . mysqli_connect_error());
+    }
+
+    $sql = "SELECT * FROM great_cartoons.transformers";
+    $result = mysqli_query($con, $sql);
+
+?>
+    <table>
+    <tr>
+    <th>Transformer Name</th>
+    <th>Type</th>
+    </tr>
+    <?php
+    while($row = mysqli_fetch_array($result, MYSQL_ASSOC))
+    {
+    ?>
+        <tr>
+                <td><?php echo $row['name']?></td>
+                <td><?php echo $row['type']?></td>
+        </tr>
+    <?php
+    }//end while
+    ?>
+    </tr>
+    </table>
+<?php
+mysqli_free_result($result);
+mysqli_close($con);
+?>
+<div class="footer">
+    All files are in the <a href="https://github.com/rposbo/basic-chef-solo-vagrant-first-website">associated github repo</a>; comments, issues, forks, PRs welcomed!
+<div>
+
+</body>
+</html>
